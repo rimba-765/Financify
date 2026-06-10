@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Financify - Alokasi Harian Pintar</title>
     
-    <!-- Meta Tags untuk iOS PWA -->
+    <!-- Meta Tags untuk iOS PWA (Full Screen & App Look) -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Financify">
@@ -226,6 +226,7 @@
                 </div>
             </div>
 
+            <!-- Asisten Finansial (Lokal & Gemini) -->
             <div class="bg-gradient-to-br from-slate-900 to-indigo-950 rounded-3xl p-5 text-white shadow-xl relative overflow-hidden border border-indigo-500/20">
                 <div class="absolute right-0 bottom-0 opacity-5 text-8xl pointer-events-none transform translate-x-4 translate-y-4">
                     <i class="fa-solid fa-brain"></i>
@@ -274,48 +275,83 @@
             </button>
         </nav>
 
-        <div id="tab-setting" class="hidden absolute inset-0 bg-slate-50 dark:bg-slate-950 z-30 pt-28 px-5 overflow-y-auto pb-28 no-scrollbar">
-            <div class="pb-4">
-                <h2 class="text-xl font-black mb-5 flex items-center gap-2 text-slate-800 dark:text-slate-100">
+        <!-- TAB PANEL: SETTING (Didesain Pas, Compact & Berada di Dalam Batas Tinggi HP) -->
+        <div id="tab-setting" class="hidden absolute inset-x-0 bottom-0 top-[72px] bg-slate-50 dark:bg-slate-950 z-30 px-5 overflow-y-auto pb-28 no-scrollbar">
+            <div class="py-4">
+                <h2 class="text-lg font-black mb-4 flex items-center gap-2 text-slate-800 dark:text-slate-100">
                     <i class="fa-solid fa-gears text-sky-500"></i> Pengaturan Aplikasi
                 </h2>
                 
-                <div class="space-y-4">
-                    <div class="bg-white dark:bg-slate-900 p-5 rounded-3xl border border-slate-100 dark:border-slate-800/80 shadow-md">
-                        <h3 class="font-extrabold text-sm mb-1 text-slate-800 dark:text-slate-100">Set Saldo Awal</h3>
-                        <p class="text-[10px] text-slate-500 mb-4 leading-relaxed">Sistem akan membagi sisa saldo ini secara matematis ke Darurat, Tagihan & Profit tanpa tercatat sebagai riwayat harian.</p>
-                        <div class="flex gap-2">
-                            <input type="number" id="input-saldo-manual" class="flex-1 px-4 py-3 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all" placeholder="Misal: 2500000">
-                            <button onclick="setSaldoManual()" class="px-5 bg-sky-500 hover:bg-sky-600 active:bg-sky-700 text-white font-extrabold text-[11px] rounded-2xl transition-all">SET</button>
+                <div class="space-y-3.5">
+                    <!-- Kartu Penyimpanan Online / Backup Cloud -->
+                    <div class="bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-100 dark:border-slate-800/80 shadow-md">
+                        <h3 class="font-extrabold text-xs mb-1 text-slate-800 dark:text-slate-100 flex items-center gap-2">
+                            <i class="fa-solid fa-cloud-arrow-up text-sky-500"></i> Backup & Sinkronisasi Online
+                        </h3>
+                        <p class="text-[9.5px] text-slate-500 mb-3 leading-relaxed">Simpan data Anda dengan aman ke cloud. Dapatkan Kode Sinkronisasi untuk memulihkan data di HP lain kapan saja.</p>
+                        
+                        <div class="space-y-2.5">
+                            <button onclick="backupDataOnline()" class="w-full py-2.5 bg-gradient-to-r from-sky-500 to-indigo-500 text-white font-extrabold text-xs rounded-xl flex items-center justify-center gap-2 shadow-md shadow-sky-500/20 active:scale-95 transition-all">
+                                <i class="fa-solid fa-cloud"></i> CADANGKAN SEKARANG
+                            </button>
+                            
+                            <div id="sync-code-container" class="hidden bg-slate-50 dark:bg-slate-950 p-3 rounded-xl border border-sky-100 dark:border-sky-900/40 flex items-center justify-between">
+                                <div>
+                                    <span class="text-[8px] text-slate-400 block uppercase font-bold tracking-wide">Kode Pemulihan Anda</span>
+                                    <span id="sync-code-display" class="font-black text-xs text-sky-500 select-all">FC-XXXXXX</span>
+                                </div>
+                                <button onclick="copySyncCode()" class="px-2.5 py-1 bg-sky-500/10 hover:bg-sky-500/20 text-sky-500 text-[9px] font-extrabold rounded-lg transition-all">
+                                    SALIN KODE
+                                </button>
+                            </div>
+
+                            <div class="border-t border-slate-100 dark:border-slate-800/80 pt-2.5">
+                                <label class="block text-[9.5px] font-bold mb-1.5 text-slate-500 uppercase tracking-wide">Masukkan Kode Pemulihan</label>
+                                <div class="flex gap-2">
+                                    <input type="text" id="restore-code-input" class="flex-1 px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-xs font-black uppercase placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-500" placeholder="Contoh: FC-89A2E1">
+                                    <button onclick="restoreDataOnline()" class="px-4 bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold text-[10px] rounded-xl active:scale-95 transition-all flex items-center justify-center gap-1">
+                                        <i class="fa-solid fa-cloud-arrow-down"></i> PULIHKAN
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="bg-white dark:bg-slate-900 p-5 rounded-3xl border border-slate-100 dark:border-slate-800/80 shadow-md">
-                        <h3 class="font-extrabold text-sm mb-1 text-slate-800 dark:text-slate-100">Target Profit Bulanan</h3>
-                        <p class="text-[10px] text-slate-500 mb-4 leading-relaxed">Mempengaruhi kalkulasi persentase bar progres keuangan Anda.</p>
+                    <div class="bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-100 dark:border-slate-800/80 shadow-md">
+                        <h3 class="font-bold text-xs mb-1 text-slate-800 dark:text-slate-100">Set Saldo Awal</h3>
+                        <p class="text-[9.5px] text-slate-500 mb-3 leading-relaxed">Sistem akan membagi sisa saldo ini secara matematis ke Darurat, Tagihan & Profit tanpa tercatat sebagai riwayat harian.</p>
                         <div class="flex gap-2">
-                            <input type="number" id="input-target-profit" class="flex-1 px-4 py-3 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all" placeholder="Misal: 5000000">
-                            <button onclick="simpanTargetProfit()" class="px-5 bg-sky-500 hover:bg-sky-600 active:bg-sky-700 text-white font-extrabold text-[11px] rounded-2xl transition-all">SIMPAN</button>
+                            <input type="number" id="input-saldo-manual" class="flex-1 px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all" placeholder="Misal: 2500000">
+                            <button onclick="setSaldoManual()" class="px-4 bg-sky-500 hover:bg-sky-600 active:bg-sky-700 text-white font-extrabold text-[10px] rounded-xl transition-all">SET</button>
                         </div>
                     </div>
 
-                    <div class="bg-white dark:bg-slate-900 p-5 rounded-3xl border border-slate-100 dark:border-slate-800/80 shadow-md">
-                        <h3 class="font-extrabold text-sm mb-2 text-slate-800 dark:text-slate-100 flex items-center gap-2">
+                    <div class="bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-100 dark:border-slate-800/80 shadow-md">
+                        <h3 class="font-bold text-xs mb-1 text-slate-800 dark:text-slate-100">Target Profit Bulanan</h3>
+                        <p class="text-[9.5px] text-slate-500 mb-3 leading-relaxed">Mempengaruhi kalkulasi persentase bar progres keuangan Anda.</p>
+                        <div class="flex gap-2">
+                            <input type="number" id="input-target-profit" class="flex-1 px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all" placeholder="Misal: 5000000">
+                            <button onclick="simpanTargetProfit()" class="px-4 bg-sky-500 hover:bg-sky-600 active:bg-sky-700 text-white font-extrabold text-[10px] rounded-xl transition-all">SIMPAN</button>
+                        </div>
+                    </div>
+
+                    <div class="bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-100 dark:border-slate-800/80 shadow-md">
+                        <h3 class="font-bold text-xs mb-1 text-slate-800 dark:text-slate-100 flex items-center gap-1.5">
                             <i class="fa-solid fa-key text-amber-500"></i> Kunci API Gemini AI
                         </h3>
-                        <p class="text-[10px] text-slate-500 mb-4">Kosongkan jika ingin menggunakan bawaan sistem (mungkin berbatas).</p>
+                        <p class="text-[9.5px] text-slate-500 mb-3">Kosongkan jika ingin menggunakan bawaan sistem (mungkin berbatas).</p>
                         <div class="flex gap-2">
-                            <input type="password" id="api-key-input" class="flex-1 px-4 py-3 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all" placeholder="Masukkan API Key...">
-                            <button onclick="saveApiKey()" class="px-5 bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-700 text-white font-extrabold text-[11px] rounded-2xl transition-all">SIMPAN</button>
+                            <input type="password" id="api-key-input" class="flex-1 px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all" placeholder="Masukkan API Key...">
+                            <button onclick="saveApiKey()" class="px-4 bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-700 text-white font-extrabold text-[10px] rounded-xl transition-all">SIMPAN</button>
                         </div>
                     </div>
 
                     <!-- Tombol Panduan Install -->
-                    <div class="bg-sky-50 dark:bg-sky-950/20 p-5 rounded-3xl border border-sky-100 dark:border-sky-900/50">
-                        <h3 class="font-bold text-xs mb-2 text-sky-800 dark:text-sky-300 flex items-center gap-2">
-                            <i class="fa-brands fa-apple text-base"></i> Install PWA di iPhone Safari
+                    <div class="bg-sky-50 dark:bg-sky-950/20 p-4 rounded-2xl border border-sky-100 dark:border-sky-900/50">
+                        <h3 class="font-bold text-[11px] mb-1.5 text-sky-800 dark:text-sky-300 flex items-center gap-1.5">
+                            <i class="fa-brands fa-apple text-sm"></i> Install PWA di iPhone Safari
                         </h3>
-                        <ol class="text-[10.5px] text-sky-900/80 dark:text-sky-300/80 space-y-1.5 list-decimal pl-4 font-medium leading-relaxed">
+                        <ol class="text-[10px] text-sky-900/80 dark:text-sky-300/80 space-y-1 list-decimal pl-4 font-medium leading-relaxed">
                             <li>Buka halaman ini menggunakan browser <strong>Safari</strong> di iPhone Anda.</li>
                             <li>Tap ikon <strong>Share (Bagikan)</strong> di bagian bawah Safari.</li>
                             <li>Pilih menu <strong>"Add to Home Screen" (Tambah ke Layar Utama)</strong>.</li>
@@ -323,14 +359,14 @@
                         </ol>
                     </div>
 
-                    <div class="bg-rose-50 dark:bg-rose-950/30 p-5 rounded-3xl border border-rose-100 dark:border-rose-900/50 mt-6">
-                        <h3 class="font-black text-[13px] mb-3 text-rose-600 dark:text-rose-400 uppercase tracking-wider text-center">Zona Berbahaya</h3>
+                    <div class="bg-rose-50 dark:bg-rose-950/30 p-4 rounded-2xl border border-rose-100 dark:border-rose-900/50 mt-4">
+                        <h3 class="font-black text-[11px] mb-2.5 text-rose-600 dark:text-rose-400 uppercase tracking-wider text-center">Zona Berbahaya</h3>
                         <div class="grid grid-cols-2 gap-3">
-                            <button onclick="confirmResetBulanan()" class="py-3 bg-white dark:bg-rose-900/40 text-rose-600 dark:text-rose-300 border border-rose-200 dark:border-rose-800 font-extrabold text-[10px] rounded-2xl flex flex-col items-center justify-center gap-1.5 active:scale-95 transition-all shadow-sm">
-                                <i class="fa-solid fa-rotate-left text-lg"></i> Reset Data
+                            <button onclick="confirmResetBulanan()" class="py-2.5 bg-white dark:bg-rose-900/40 text-rose-600 dark:text-rose-300 border border-rose-200 dark:border-rose-800 font-extrabold text-[9.5px] rounded-xl flex flex-col items-center justify-center gap-1 active:scale-95 transition-all shadow-sm">
+                                <i class="fa-solid fa-rotate-left text-sm"></i> Reset Data
                             </button>
-                            <button onclick="confirmExitApp()" class="py-3 bg-rose-500 hover:bg-rose-600 text-white font-extrabold text-[10px] rounded-2xl flex flex-col items-center justify-center gap-1.5 active:scale-95 transition-all shadow-md shadow-rose-500/20">
-                                <i class="fa-solid fa-right-from-bracket text-lg"></i> Tutup App
+                            <button onclick="confirmExitApp()" class="py-2.5 bg-rose-500 hover:bg-rose-600 text-white font-extrabold text-[9.5px] rounded-xl flex flex-col items-center justify-center gap-1 active:scale-95 transition-all shadow-md shadow-rose-500/20">
+                                <i class="fa-solid fa-right-from-bracket text-sm"></i> Tutup App
                             </button>
                         </div>
                     </div>
@@ -669,6 +705,140 @@
         generateDynamicAppleIcon();
     </script>
 
+    <!-- FIREBASE MODULE SYSTEM FOR SECURE INTERNET STORAGE -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'financify-smart-app';
+        
+        // Konfigurasi default aman jika berada di luar env
+        const fallbackConfig = {
+            apiKey: "AIzaSyAs-FakeKey-ForTestingOnly123",
+            authDomain: "financify-app.firebaseapp.com",
+            projectId: "financify-app",
+            storageBucket: "financify-app.appspot.com",
+            messagingSenderId: "123456789",
+            appId: "1:12345:web:12345"
+        };
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : fallbackConfig;
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        let isFirebaseAuthed = false;
+
+        async function ensureFirebaseAuthed() {
+            if (isFirebaseAuthed) return true;
+            try {
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    await signInWithCustomToken(auth, __initial_auth_token);
+                } else {
+                    await signInAnonymously(auth);
+                }
+                isFirebaseAuthed = true;
+                return true;
+            } catch (err) {
+                console.error("Firebase auth error:", err);
+                return false;
+            }
+        }
+
+        // FUNGSI BACKUP ONLINE (Awan internet gratis & aman)
+        window.backupDataOnline = async function() {
+            const hasAuth = await ensureFirebaseAuthed();
+            if (!hasAuth) {
+                showToast("Koneksi cloud gagal. Cek internet Anda!", true);
+                return;
+            }
+
+            let syncCode = state.activeSyncCode;
+            if (!syncCode) {
+                // Generate 6 digit random alphanumeric code yang sangat unik
+                syncCode = "FC-" + Math.random().toString(36).substring(2, 8).toUpperCase();
+            }
+
+            try {
+                const targetDoc = doc(db, 'artifacts', appId, 'public', 'data', 'backups', syncCode);
+                await setDoc(targetDoc, {
+                    stateData: JSON.stringify(state),
+                    updatedAt: new Date().toISOString()
+                });
+
+                state.activeSyncCode = syncCode;
+                saveLocalData();
+
+                document.getElementById('sync-code-container').classList.remove('hidden');
+                document.getElementById('sync-code-display').innerText = syncCode;
+
+                showToast(`Data dicadangkan dengan kode: ${syncCode}`);
+            } catch (err) {
+                console.error("Cloud write failed:", err);
+                showToast("Gagal mengunggah data pencadangan!", true);
+            }
+        }
+
+        // FUNGSI RESTORE ONLINE
+        window.restoreDataOnline = async function() {
+            const codeInput = document.getElementById('restore-code-input').value.trim().toUpperCase();
+            if (!codeInput) {
+                showToast("Mohon masukkan Kode Pemulihan Anda!", true);
+                return;
+            }
+
+            const hasAuth = await ensureFirebaseAuthed();
+            if (!hasAuth) {
+                showToast("Koneksi cloud gagal. Cek internet Anda!", true);
+                return;
+            }
+
+            try {
+                const targetDoc = doc(db, 'artifacts', appId, 'public', 'data', 'backups', codeInput);
+                const docSnap = await getDoc(targetDoc);
+
+                if (docSnap.exists()) {
+                    const parsed = JSON.parse(docSnap.data().stateData);
+                    
+                    // Ganti state lama dengan state cloud
+                    state = parsed;
+                    state.activeSyncCode = codeInput;
+                    
+                    saveLocalData();
+                    
+                    // Isi input-input setting kembali
+                    document.getElementById('input-operasional-harian').value = state.operasionalHarianConfig || 300000;
+                    document.getElementById('input-operasional-sebulan').value = state.operasionalSebulanConfig || 9000000;
+                    document.getElementById('input-target-profit').value = state.targetProfitConfig || 5000000;
+                    document.getElementById('api-key-input').value = state.apiKey || '';
+
+                    document.getElementById('sync-code-container').classList.remove('hidden');
+                    document.getElementById('sync-code-display').innerText = codeInput;
+
+                    showToast("Pemulihan data sukses! Kas disinkronisasi.");
+                    switchTab('dashboard');
+                } else {
+                    showToast("Kode pemulihan tidak ditemukan!", true);
+                }
+            } catch (err) {
+                console.error("Cloud read failed:", err);
+                showToast("Gagal memulihkan pencadangan!", true);
+            }
+        }
+
+        window.copySyncCode = function() {
+            const syncCode = document.getElementById('sync-code-display').innerText;
+            const tempInput = document.createElement("input");
+            tempInput.value = syncCode;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+            showToast("Kode pemulihan disalin!");
+        }
+    </script>
+
     <script>
         let state = {
             baseFunds: 0, 
@@ -684,7 +854,8 @@
             apiKey: '',
             isProyeksi: false, 
             pendingIncome: 0, 
-            alokasiTerakhir: [] 
+            alokasiTerakhir: [],
+            activeSyncCode: ''
         };
 
         let editingBelanjaId = null;
@@ -716,6 +887,11 @@
             document.getElementById('input-operasional-sebulan').value = state.operasionalSebulanConfig || 9000000;
             document.getElementById('input-target-profit').value = state.targetProfitConfig || 5000000;
             document.getElementById('api-key-input').value = state.apiKey || '';
+
+            if (state.activeSyncCode) {
+                document.getElementById('sync-code-container').classList.remove('hidden');
+                document.getElementById('sync-code-display').innerText = state.activeSyncCode;
+            }
         }
 
         function saveLocalData() {
@@ -1029,7 +1205,6 @@
                 let statusColor = "bg-emerald-500/10 text-emerald-500 border-emerald-500/20";
                 let statusMsg = "Aman (Belanja Maksimal)";
 
-                // Menghitung prioritas belanja toko yang realistis sesuai kondisi omset
                 if (totalTargetHarianSemua === 0) {
                     proyBelanja = Math.min(netIncome, state.operasionalHarianConfig);
                 } else {
@@ -1078,7 +1253,6 @@
             }
         }
 
-        // FUNGSI UNTUK MENGHINDARI TEKS TERPOTONG DI DAFTAR ALOKASI
         function createBreakdownRow(label, value, colorClass) {
             const div = document.createElement('div');
             div.className = 'flex items-start justify-between py-2 border-b border-slate-200/50 dark:border-slate-700/50 last:border-0 px-1';
