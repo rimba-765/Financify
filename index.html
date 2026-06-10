@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Financify - Alokasi Harian Pintar</title>
     
+    <!-- Meta Tags untuk iOS PWA -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Financify">
-    
-    <link rel="apple-touch-icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%230f172a'/><path d='M25 40 h40 a10 10 0 0 1 10 10 v20 a10 10 0 0 1 -10 10 h-40 a10 10 0 0 1 -10 -10 v-20 a10 10 0 0 1 10 -10 z' fill='rgba(56,189,248,0.2)'/><path d='M25 30 h50 a10 10 0 0 1 10 10 v10 h-70 v-10 a10 10 0 0 1 10 -10 z' fill='%2338bdf8'/><path d='M75 55 h10 a5 5 0 0 1 5 5 v10 a5 5 0 0 1 -5 5 h-10 z' fill='%2334d399'/><circle cx='80' cy='65' r='3' fill='%230f172a'/></svg>">
 
+    <!-- Google Font Plus Jakarta Sans & Font Awesome -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -58,23 +58,17 @@
         .animate-fade-in {
             animation: fadeIn 0.2s ease-out forwards;
         }
-        /* Menambahkan efek shadow halus untuk mode premium */
-        .premium-shadow {
-            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.1);
-        }
-        .dark .premium-shadow {
-            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5);
-        }
     </style>
 </head>
 <body class="bg-slate-900 text-slate-800 dark:text-slate-100 min-h-screen flex justify-center overflow-x-hidden antialiased transition-colors duration-300">
 
+    <!-- Container Utama seukuran HP iPhone -->
     <div class="w-full max-w-md bg-slate-50 dark:bg-slate-950 min-h-screen flex flex-col justify-between relative shadow-2xl border-x border-slate-200 dark:border-slate-900 pb-24">
 
-        <header class="sticky top-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800/80 px-5 py-4 flex items-center justify-between pt-8 shadow-sm">
+        <header class="sticky top-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-5 py-4 flex items-center justify-between pt-8 shadow-sm">
             <div class="flex items-center space-x-3">
                 <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-slate-800 to-slate-900 p-2 shadow-lg shadow-sky-500/20 border border-slate-700/50 flex items-center justify-center">
-                    <!-- Premium App Icon SVG -->
+                    <!-- SVG Dompet Logo Sinkron dengan Ikon App -->
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="w-full h-full drop-shadow-md">
                         <path d="M15 40 h55 a10 10 0 0 1 10 10 v20 a10 10 0 0 1 -10 10 h-55 a10 10 0 0 1 -10 -10 v-20 a10 10 0 0 1 10 -10 z" fill="rgba(56,189,248,0.2)"/>
                         <path d="M15 30 h65 a10 10 0 0 1 10 10 v10 h-85 v-10 a10 10 0 0 1 10 -10 z" fill="#38bdf8"/>
@@ -99,6 +93,7 @@
 
         <main class="flex-1 px-5 py-5 overflow-y-auto no-scrollbar space-y-5">
 
+            <!-- Card Ringkasan Keuangan -->
             <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-slate-800 to-sky-950 p-6 text-white shadow-xl shadow-slate-950/20">
                 <div class="absolute -right-10 -top-10 w-40 h-40 rounded-full bg-sky-500/10 blur-2xl"></div>
                 <div class="absolute -left-10 -bottom-10 w-40 h-40 rounded-full bg-emerald-500/10 blur-2xl"></div>
@@ -126,6 +121,7 @@
                     </div>
                 </div>
                 
+                <!-- Progress Bar Kelunasan -->
                 <div class="mt-4 pt-1">
                     <div class="flex justify-between text-[10px] text-slate-300 mb-1.5 font-medium">
                         <span>Progres Target Bulanan</span>
@@ -137,8 +133,9 @@
                 </div>
             </div>
 
+            <!-- Tombol Aksi Utama -->
             <div class="grid grid-cols-2 gap-3">
-                <button onclick="openModal('modal-tagihan')" class="flex flex-row items-center justify-start p-3 bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800/80 active:scale-95 transition-all premium-shadow gap-3">
+                <button onclick="openModal('modal-tagihan')" class="flex flex-row items-center justify-start p-3 bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800/80 active:scale-95 transition-all shadow-md dark:shadow-slate-950/50 gap-3">
                     <div class="w-10 h-10 shrink-0 rounded-2xl bg-rose-50 dark:bg-rose-950/40 text-rose-500 flex items-center justify-center">
                         <i class="fa-solid fa-receipt text-lg"></i>
                     </div>
@@ -147,7 +144,7 @@
                         <span class="text-[9px] text-slate-400 font-medium">Buat cicilan baru</span>
                     </div>
                 </button>
-                <button onclick="openModal('modal-operasional-config')" class="flex flex-row items-center justify-start p-3 bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800/80 active:scale-95 transition-all premium-shadow gap-3">
+                <button onclick="openModal('modal-operasional-config')" class="flex flex-row items-center justify-start p-3 bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800/80 active:scale-95 transition-all shadow-md dark:shadow-slate-950/50 gap-3">
                     <div class="w-10 h-10 shrink-0 rounded-2xl bg-amber-50 dark:bg-amber-950/40 text-amber-500 flex items-center justify-center">
                         <i class="fa-solid fa-basket-shopping text-lg"></i>
                     </div>
@@ -158,7 +155,7 @@
                 </button>
             </div>
 
-            <div id="breakdown-pemasukan-container" class="bg-gradient-to-br from-indigo-900/10 via-slate-900/30 to-indigo-950/20 dark:from-indigo-950/40 dark:via-slate-950 dark:to-indigo-950/60 border border-indigo-500/20 rounded-3xl p-5 premium-shadow space-y-4 animate-fade-in relative overflow-hidden">
+            <div id="breakdown-pemasukan-container" class="bg-gradient-to-br from-indigo-900/10 via-slate-900/30 to-indigo-950/20 dark:from-indigo-950/40 dark:via-slate-950 dark:to-indigo-950/60 border border-indigo-500/20 rounded-3xl p-5 shadow-lg space-y-4 animate-fade-in relative overflow-hidden">
                 <div class="absolute right-0 top-0 w-32 h-32 bg-indigo-500/5 rounded-full blur-2xl pointer-events-none"></div>
                 
                 <div class="flex justify-between items-center pb-3 border-b border-indigo-500/10 dark:border-indigo-500/20">
@@ -181,6 +178,7 @@
                     <!-- Dinamis diisi lewat JS tanpa teks terpotong -->
                 </div>
                 
+                <!-- Input Belanja Real (Tersembunyi & otomatis mengaktifkan mode realtime) -->
                 <div id="inline-belanja-container" class="hidden mt-3 pt-3">
                     <div class="flex justify-between items-center mb-2.5">
                         <h4 class="text-[11px] font-extrabold text-slate-800 dark:text-slate-200 tracking-wide flex items-center gap-1.5">
@@ -207,6 +205,7 @@
                 </button>
             </div>
 
+            <!-- Daftar Tagihan Utama -->
             <div>
                 <div class="flex justify-between items-center mb-3 px-1">
                     <h3 class="text-[15px] font-black tracking-tight text-slate-800 dark:text-slate-100">Daftar Tagihan Aktif</h3>
@@ -217,6 +216,7 @@
                 </div>
             </div>
 
+            <!-- Riwayat Belanja Ekstra -->
             <div>
                 <h3 class="text-[15px] font-black tracking-tight mb-3 px-1 text-slate-800 dark:text-slate-100 flex items-center gap-2">
                     <i class="fa-solid fa-basket-shopping text-amber-500"></i> Riwayat Belanja Ekstra
@@ -258,7 +258,7 @@
 
         </main>
 
-        <nav class="absolute bottom-0 inset-x-0 bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border-t border-slate-200 dark:border-slate-800/80 px-6 py-2 flex justify-around items-center z-50 pb-safe shadow-[0_-10px_20px_rgba(0,0,0,0.05)]">
+        <nav class="absolute bottom-0 inset-x-0 bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border-t border-slate-200 dark:border-slate-800 px-6 py-2 flex justify-around items-center z-50 pb-safe shadow-[0_-10px_20px_rgba(0,0,0,0.05)]">
             <button onclick="switchTab('dashboard')" id="nav-dashboard" class="flex flex-col items-center space-y-1 text-sky-500 transition-colors py-2 px-4 rounded-xl">
                 <i class="fa-solid fa-house-chimney text-lg"></i>
                 <span class="text-[9.5px] font-bold">Beranda</span>
@@ -281,7 +281,7 @@
                 </h2>
                 
                 <div class="space-y-4">
-                    <div class="bg-white dark:bg-slate-900 p-5 rounded-3xl border border-slate-100 dark:border-slate-800/80 premium-shadow">
+                    <div class="bg-white dark:bg-slate-900 p-5 rounded-3xl border border-slate-100 dark:border-slate-800/80 shadow-md">
                         <h3 class="font-extrabold text-sm mb-1 text-slate-800 dark:text-slate-100">Set Saldo Awal</h3>
                         <p class="text-[10px] text-slate-500 mb-4 leading-relaxed">Sistem akan membagi sisa saldo ini secara matematis ke Darurat, Tagihan & Profit tanpa tercatat sebagai riwayat harian.</p>
                         <div class="flex gap-2">
@@ -290,7 +290,7 @@
                         </div>
                     </div>
 
-                    <div class="bg-white dark:bg-slate-900 p-5 rounded-3xl border border-slate-100 dark:border-slate-800/80 premium-shadow">
+                    <div class="bg-white dark:bg-slate-900 p-5 rounded-3xl border border-slate-100 dark:border-slate-800/80 shadow-md">
                         <h3 class="font-extrabold text-sm mb-1 text-slate-800 dark:text-slate-100">Target Profit Bulanan</h3>
                         <p class="text-[10px] text-slate-500 mb-4 leading-relaxed">Mempengaruhi kalkulasi persentase bar progres keuangan Anda.</p>
                         <div class="flex gap-2">
@@ -299,7 +299,7 @@
                         </div>
                     </div>
 
-                    <div class="bg-white dark:bg-slate-900 p-5 rounded-3xl border border-slate-100 dark:border-slate-800/80 premium-shadow">
+                    <div class="bg-white dark:bg-slate-900 p-5 rounded-3xl border border-slate-100 dark:border-slate-800/80 shadow-md">
                         <h3 class="font-extrabold text-sm mb-2 text-slate-800 dark:text-slate-100 flex items-center gap-2">
                             <i class="fa-solid fa-key text-amber-500"></i> Kunci API Gemini AI
                         </h3>
@@ -308,6 +308,19 @@
                             <input type="password" id="api-key-input" class="flex-1 px-4 py-3 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all" placeholder="Masukkan API Key...">
                             <button onclick="saveApiKey()" class="px-5 bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-700 text-white font-extrabold text-[11px] rounded-2xl transition-all">SIMPAN</button>
                         </div>
+                    </div>
+
+                    <!-- Tombol Panduan Install -->
+                    <div class="bg-sky-50 dark:bg-sky-950/20 p-5 rounded-3xl border border-sky-100 dark:border-sky-900/50">
+                        <h3 class="font-bold text-xs mb-2 text-sky-800 dark:text-sky-300 flex items-center gap-2">
+                            <i class="fa-brands fa-apple text-base"></i> Install PWA di iPhone Safari
+                        </h3>
+                        <ol class="text-[10.5px] text-sky-900/80 dark:text-sky-300/80 space-y-1.5 list-decimal pl-4 font-medium leading-relaxed">
+                            <li>Buka halaman ini menggunakan browser <strong>Safari</strong> di iPhone Anda.</li>
+                            <li>Tap ikon <strong>Share (Bagikan)</strong> di bagian bawah Safari.</li>
+                            <li>Pilih menu <strong>"Add to Home Screen" (Tambah ke Layar Utama)</strong>.</li>
+                            <li>Buka dari Home Screen untuk tampilan <strong>Full Screen</strong> tanpa toolbar Safari!</li>
+                        </ol>
                     </div>
 
                     <div class="bg-rose-50 dark:bg-rose-950/30 p-5 rounded-3xl border border-rose-100 dark:border-rose-900/50 mt-6">
@@ -330,7 +343,7 @@
     <!-- MODAL 1: INPUT PEMASUKAN HARIAN -->
     <div id="modal-pemasukan" class="fixed inset-0 z-[60] bg-slate-900/80 backdrop-blur-md hidden flex items-end justify-center">
         <div class="bg-white dark:bg-slate-900 w-full max-w-md rounded-t-[32px] p-6 pb-10 space-y-5 shadow-2xl animate-fade-in border-t border-slate-200 dark:border-slate-800">
-            <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-800/80 pb-4">
+            <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-800 pb-4">
                 <h3 class="font-black text-lg text-emerald-500 flex items-center gap-2">
                     <i class="fa-solid fa-circle-arrow-down"></i> Pemasukan Kas Baru
                 </h3>
@@ -363,7 +376,7 @@
     <!-- MODAL 2: TAMBAH TAGIHAN -->
     <div id="modal-tagihan" class="fixed inset-0 z-[60] bg-slate-900/80 backdrop-blur-md hidden flex items-end justify-center">
         <div class="bg-white dark:bg-slate-900 w-full max-w-md rounded-t-[32px] p-6 pb-10 space-y-4 shadow-2xl animate-fade-in border-t border-slate-200 dark:border-slate-800">
-            <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-800/80 pb-4">
+            <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-800 pb-4">
                 <h3 class="font-black text-lg text-rose-500 flex items-center gap-2">
                     <i class="fa-solid fa-receipt"></i> Tambah Cicilan Wajib
                 </h3>
@@ -398,7 +411,7 @@
     <!-- MODAL 3: PENGELUARAN OPERASIONAL -->
     <div id="modal-operasional-expense" class="fixed inset-0 z-[60] bg-slate-900/80 backdrop-blur-md hidden flex items-end justify-center">
         <div class="bg-white dark:bg-slate-900 w-full max-w-md rounded-t-[32px] p-6 pb-10 space-y-4 shadow-2xl animate-fade-in border-t border-slate-200 dark:border-slate-800">
-            <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-800/80 pb-4">
+            <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-800 pb-4">
                 <h3 id="expense-modal-title" class="font-black text-lg text-amber-500 flex items-center gap-2">
                     <i class="fa-solid fa-basket-shopping"></i> Catat Belanja Ekstra
                 </h3>
@@ -434,7 +447,7 @@
     <!-- MODAL 4: DETAIL TAGIHAN -->
     <div id="modal-detail-tagihan" class="fixed inset-0 z-[60] bg-slate-900/80 backdrop-blur-md hidden flex items-center justify-center p-4">
         <div class="bg-white dark:bg-slate-900 w-full max-w-md rounded-3xl p-6 space-y-4 shadow-2xl max-h-[85vh] flex flex-col justify-between animate-fade-in border border-slate-200 dark:border-slate-800">
-            <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-800/80 pb-3">
+            <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-800 pb-3">
                 <h3 class="font-black text-[15px] text-slate-800 dark:text-slate-100 flex items-center gap-2">
                     <i class="fa-solid fa-magnifying-glass-chart text-indigo-500"></i> Audit Tagihan
                 </h3>
@@ -448,11 +461,11 @@
                 </div>
 
                 <div class="grid grid-cols-2 gap-3">
-                    <div class="bg-slate-50 dark:bg-slate-950 p-3.5 rounded-2xl border border-slate-100 dark:border-slate-800/80">
+                    <div class="bg-slate-50 dark:bg-slate-950 p-3.5 rounded-2xl border border-slate-100 dark:border-slate-800">
                         <span class="text-[9px] text-slate-400 block uppercase font-extrabold tracking-wide mb-1">Total Target</span>
                         <span id="detail-tagihan-nominal" class="font-black text-sm text-slate-800 dark:text-slate-100">Rp 0</span>
                     </div>
-                    <div class="bg-slate-50 dark:bg-slate-950 p-3.5 rounded-2xl border border-slate-100 dark:border-slate-800/80">
+                    <div class="bg-slate-50 dark:bg-slate-950 p-3.5 rounded-2xl border border-slate-100 dark:border-slate-800">
                         <span class="text-[9px] text-slate-400 block uppercase font-extrabold tracking-wide mb-1">Terkumpul</span>
                         <span id="detail-tagihan-terkumpul" class="font-black text-sm text-emerald-500">Rp 0</span>
                     </div>
@@ -472,7 +485,7 @@
                     </div>
                 </div>
 
-                <div class="bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800/80 rounded-2xl p-3.5">
+                <div class="bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800 rounded-2xl p-3.5">
                     <h5 class="text-[10px] font-black text-slate-500 uppercase tracking-wide mb-3 flex items-center gap-1.5">
                         <i class="fa-solid fa-timeline"></i> Riwayat Alokasi Dana Masuk
                     </h5>
@@ -482,7 +495,7 @@
                 </div>
             </div>
 
-            <div class="pt-4 border-t border-slate-100 dark:border-slate-800/80 flex gap-3">
+            <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex gap-3">
                 <button id="btn-delete-tagihan" class="flex-1 py-3.5 bg-rose-50 dark:bg-rose-950/30 text-rose-600 dark:text-rose-400 font-black text-[11px] uppercase tracking-wide rounded-2xl active:scale-95 transition-all flex items-center justify-center gap-2 border border-rose-200 dark:border-rose-900/50">
                     <i class="fa-solid fa-trash-can"></i> Hapus
                 </button>
@@ -496,7 +509,7 @@
     <!-- MODAL 5: CONFIG OPERASIONAL -->
     <div id="modal-operasional-config" class="fixed inset-0 z-[60] bg-slate-900/80 backdrop-blur-md hidden flex items-end justify-center">
         <div class="bg-white dark:bg-slate-900 w-full max-w-md rounded-t-[32px] p-6 pb-10 space-y-4 shadow-2xl animate-fade-in border-t border-slate-200 dark:border-slate-800">
-            <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-800/80 pb-4">
+            <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-800 pb-4">
                 <h3 class="font-black text-lg text-sky-500 flex items-center gap-2"><i class="fa-solid fa-sliders"></i> Limit Belanja Ekstra</h3>
                 <button onclick="closeModal('modal-operasional-config')" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 flex items-center justify-center hover:bg-slate-200 transition-colors"><i class="fa-solid fa-xmark"></i></button>
             </div>
@@ -523,7 +536,7 @@
     <!-- MODAL 6: RIWAYAT SEMUA PEMASUKAN -->
     <div id="modal-riwayat-pemasukan" class="fixed inset-0 z-[60] bg-slate-900/80 backdrop-blur-md hidden flex items-center justify-center p-4">
         <div class="bg-white dark:bg-slate-900 w-full max-w-md rounded-3xl p-6 space-y-4 shadow-2xl max-h-[80vh] flex flex-col border border-slate-200 dark:border-slate-800 animate-fade-in">
-            <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-800/80 pb-3">
+            <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-800 pb-3">
                 <h3 class="font-black text-[15px] text-slate-800 dark:text-slate-100 flex items-center gap-2">
                     <i class="fa-solid fa-clock-rotate-left text-emerald-500"></i> Historis Pemasukan
                 </h3>
@@ -553,6 +566,110 @@
     </div>
 
     <script>
+        // LOGIKA DYNAMIC APPLE TOUCH ICON GENERATOR (Solusi Pasti Ikon Home Screen iOS Safari)
+        function generateDynamicAppleIcon() {
+            // Membuat canvas offscreen resolusi tinggi 180x180 (Ukuran Retina iPhone)
+            const canvas = document.createElement('canvas');
+            canvas.width = 180;
+            canvas.height = 180;
+            const ctx = canvas.getContext('2d');
+
+            // 1. Gambar Background Navy Bergradien M-banking
+            const bgGrad = ctx.createLinearGradient(0, 0, 180, 180);
+            bgGrad.addColorStop(0, '#0f172a');
+            bgGrad.addColorStop(1, '#020617');
+            ctx.fillStyle = bgGrad;
+            ctx.fillRect(0, 0, 180, 180);
+
+            // 2. Lingkaran Cahaya Glow Dekoratif
+            ctx.beginPath();
+            ctx.arc(140, 40, 50, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(56, 189, 248, 0.15)'; // Sky glow
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.arc(40, 140, 60, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(52, 211, 153, 0.15)'; // Emerald glow
+            ctx.fill();
+
+            // Fungsi Pembantu rounded rect
+            function roundRect(c, x, y, w, h, r) {
+                c.beginPath();
+                c.moveTo(x + r, y);
+                c.lineTo(x + w - r, y);
+                c.quadraticCurveTo(x + w, y, x + w, y + r);
+                c.lineTo(x + w, y + h - r);
+                c.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+                c.lineTo(x + r, y + h);
+                c.quadraticCurveTo(x, y + h, x, y + h - r);
+                c.lineTo(x, y + r);
+                c.quadraticCurveTo(x, y, x + r, y);
+                c.closePath();
+            }
+
+            // 3. Menggambar Dompet (Identik dengan SVG Logo)
+            ctx.save();
+            ctx.translate(90, 95); // Pusatkan di area tengah
+
+            // Kartu di dalam dompet
+            ctx.fillStyle = '#0ea5e9';
+            roundRect(ctx, -32, -45, 64, 40, 8);
+            ctx.fill();
+            ctx.fillStyle = '#0284c7';
+            ctx.fillRect(-32, -35, 64, 8); // Pita magnetik kartu
+
+            // Saku Dompet Depan
+            const walletGrad = ctx.createLinearGradient(-45, -25, 45, 35);
+            walletGrad.addColorStop(0, '#1e293b');
+            walletGrad.addColorStop(1, '#0f172a');
+            ctx.fillStyle = walletGrad;
+            ctx.strokeStyle = '#38bdf8'; // Border biru menyala
+            ctx.lineWidth = 3;
+            roundRect(ctx, -45, -25, 90, 60, 12);
+            ctx.fill();
+            ctx.stroke();
+
+            // Pengunci Dompet Emerald
+            ctx.fillStyle = '#34d399';
+            roundRect(ctx, 15, -10, 30, 20, 6);
+            ctx.fill();
+
+            // Kancing emas kecil
+            ctx.fillStyle = '#fbbf24';
+            ctx.beginPath();
+            ctx.arc(30, 0, 3.5, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Simbol huruf 'F' modern di dompet
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'black 22px "Plus Jakarta Sans", -apple-system, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('F', -18, 5);
+
+            ctx.restore();
+
+            // 4. Konversi ke Base64 PNG URL & Suntikkan ke Head Safari
+            const base64Png = canvas.toDataURL('image/png');
+            
+            // Cari tag apple-touch-icon lama jika ada, lalu hapus
+            const oldLink = document.querySelector("link[rel='apple-touch-icon']");
+            if (oldLink) {
+                document.head.removeChild(oldLink);
+            }
+
+            // Buat tag link apple-touch-icon baru
+            const newLink = document.createElement('link');
+            newLink.rel = 'apple-touch-icon';
+            newLink.href = base64Png;
+            document.head.appendChild(newLink);
+        }
+
+        // Jalankan Generator Ikon Segera
+        generateDynamicAppleIcon();
+    </script>
+
+    <script>
         let state = {
             baseFunds: 0, 
             saldo: 0, 
@@ -578,6 +695,9 @@
             applyTheme();
             const todayStr = new Date().toISOString().split('T')[0];
             document.getElementById('input-operasional-expense-date').value = todayStr;
+            
+            // Pastikan ikon PWA dorender ulang pasca load state
+            generateDynamicAppleIcon();
         };
 
         function loadLocalData() {
@@ -653,6 +773,7 @@
             let distribusiResult = [];
             let sisaPool = poolDana;
 
+            // 1. Amankan Tabungan Darurat 5%
             let daruratCut = poolDana * 0.05;
             if (daruratCut > 0) {
                 distribusiResult.push({ nama: 'Uang Darurat (5%)', nominal: daruratCut, colorClass: 'bg-amber-400' });
@@ -663,9 +784,11 @@
                 sisaPool -= daruratCut;
             }
             
+            // 2. Ambil List Tagihan Belum Lunas
             let activeBills = state.tagihan.filter(t => !t.isLunas);
 
             if (activeBills.length > 0 && sisaPool > 0) {
+                // Kalkulasi kebutuhan harian setiap tagihan sampai tempo
                 let billShares = activeBills.map(t => {
                     let sisaHari = Math.max(1, hitungSisaHari(t.tempo));
                     let sisaKebutuhan = Math.max(0, t.nominal - t.terkumpul);
@@ -674,6 +797,7 @@
                 });
 
                 if (isInitialSetup) {
+                    // Setoran Sisa Saldo: bagi pro-rata sesuai total kekurangan sisa hutang
                     let totalKebutuhan = billShares.reduce((sum, bs) => sum + bs.sisaKebutuhan, 0);
                     billShares.forEach(bs => {
                         let proporsi = totalKebutuhan > 0 ? (bs.sisaKebutuhan / totalKebutuhan) : 0;
@@ -691,6 +815,7 @@
                         }
                     });
                 } else {
+                    // Distribusi harian proporsional berdasarkan sisa hari & target harian
                     let totalTargetHarian = billShares.reduce((sum, bs) => sum + bs.targetHarian, 0);
                     billShares.forEach(bs => {
                         let dapatDana = 0;
@@ -710,9 +835,11 @@
                     });
                 }
 
+                // Sisa dana pasca alokasi wajib harian
                 let totalTerbagikan = distribusiResult.filter(r => r.nama.startsWith('Cicil')).reduce((sum, r) => sum + r.nominal, 0);
                 sisaPool -= totalTerbagikan;
 
+                // Percepat pelunasan tagihan jika kas melimpah (surplus alokasi)
                 if (sisaPool > 1 && applyToState && !isInitialSetup) {
                     let billsKurang = billShares.filter(bs => (bs.ref.nominal - bs.ref.terkumpul) > 0.01);
                     while (sisaPool > 1 && billsKurang.length > 0) {
@@ -729,6 +856,7 @@
 
                             if (tambahanDapat > 0) {
                                 if (!bs.ref.riwayat) bs.ref.riwayat = [];
+                                // Jika alokasi harian di hari yang sama, gabung saja catatannya agar riwayat rapi
                                 let lastRiwayat = bs.ref.riwayat[bs.ref.riwayat.length - 1];
                                 if (lastRiwayat && lastRiwayat.ket === 'Alokasi Harian' && lastRiwayat.tanggal.split('T')[0] === new Date().toISOString().split('T')[0]) {
                                     lastRiwayat.nominal += tambahanDapat;
@@ -751,6 +879,7 @@
                 });
             }
 
+            // 3. Sisanya adalah Profit Murni (Uang Dingin)
             distribusiResult.push({
                 nama: 'Sisa Profit Bersih',
                 nominal: Math.max(0, sisaPool),
@@ -765,11 +894,13 @@
             let totalBelanja = state.belanja.reduce((sum, b) => sum + b.nominal, 0);
             let totalManualLunas = state.tagihan.filter(t => t.isLunas).reduce((sum, t) => sum + t.nominal, 0);
             
+            // Formula Kunci: Saldo di tangan = Setoran Manual + Pemasukan Harian - Belanja Real - Tagihan yang Sudah Dibayar Fisik (Lunas)
             state.saldo = state.baseFunds + totalIncomes - totalBelanja - totalManualLunas;
 
             let totalHutangTerkumpul = state.tagihan.filter(t => !t.isLunas).reduce((sum, t) => sum + t.terkumpul, 0);
             if (state.uangDarurat === undefined) state.uangDarurat = 0;
             
+            // Profit murni = Saldo Kas di tangan - Total Kas yang masih terikat dicicil untuk tagihan berjalan - Uang Darurat
             state.profitBersih = state.saldo - totalHutangTerkumpul - state.uangDarurat;
 
             document.getElementById('display-saldo').innerText = formatRupiah(state.saldo);
@@ -777,6 +908,7 @@
             document.getElementById('display-profit').innerText = formatRupiah(state.profitBersih);
             document.getElementById('display-darurat').innerText = formatRupiah(state.uangDarurat);
 
+            // Perhitungan Persentase Progres Gabungan (Tagihan + Profit)
             const totalHutangTarget = state.tagihan.reduce((sum, t) => sum + t.nominal, 0);
             const totalKebutuhanGabungan = totalHutangTarget + state.targetProfitConfig;
             
@@ -808,8 +940,10 @@
             state.uangDarurat = 0; 
             state.alokasiTerakhir = [];
 
+            // Reset tabungan terkumpul tagihan
             state.tagihan.forEach(t => { t.terkumpul = 0; t.isLunas = false; t.riwayat = []; });
 
+            // Bagi sisa saldo awal secara rata (Equal-Distribution) ke tagihan
             hitungDistribusiDana(nominal, true, true);
 
             saveLocalData();
@@ -850,13 +984,16 @@
                 state.belanja.push({ id: Date.now(), nama: desc, nominal: nominal, tanggal: new Date().toISOString().split('T')[0] });
             }
 
+            // Hitung sisa bersih omset harian yang bisa dibagi
             const netto = state.pendingIncome - nominal;
             let hasilDistribusi = hitungDistribusiDana(Math.max(0, netto), true, false);
             
+            // Catat rekap alokasi terakhir
             state.alokasiTerakhir = [];
             state.alokasiTerakhir.push({ nama: 'Dibelanjakan: ' + desc, nominal: nominal, colorClass: 'bg-amber-500' });
             state.alokasiTerakhir = state.alokasiTerakhir.concat(hasilDistribusi);
 
+            // Tutup sesi proyeksi hari ini
             state.isProyeksi = false;
             state.pendingIncome = 0;
             
@@ -877,6 +1014,7 @@
                 headerTitle.innerHTML = `<i class="fa-solid fa-chart-pie text-indigo-500"></i> Proyeksi Alokasi`;
                 totalSpan.innerText = `Omset: ${formatRupiah(state.pendingIncome)}`;
 
+                // Hitung total kebutuhan cicilan harian gabungan
                 let activeBills = state.tagihan.filter(t => !t.isLunas);
                 let totalTargetHarianSemua = 0;
                 activeBills.forEach(t => {
@@ -885,16 +1023,18 @@
                     totalTargetHarianSemua += (sisaKebutuhan / sisaHari);
                 });
 
+                // Proyeksi sisa omset bersih setelah tabungan darurat harian 5%
                 let netIncome = state.pendingIncome * 0.95; 
                 let proyBelanja = 0;
                 let statusColor = "bg-emerald-500/10 text-emerald-500 border-emerald-500/20";
                 let statusMsg = "Aman (Belanja Maksimal)";
 
+                // Menghitung prioritas belanja toko yang realistis sesuai kondisi omset
                 if (totalTargetHarianSemua === 0) {
                     proyBelanja = Math.min(netIncome, state.operasionalHarianConfig);
                 } else {
                     if (netIncome <= totalTargetHarianSemua) {
-                        proyBelanja = Math.max(0, netIncome * 0.15);
+                        proyBelanja = Math.max(0, netIncome * 0.15); // Amankan min 15% untuk ops
                         statusColor = "bg-rose-500/10 text-rose-500 border-rose-500/20";
                         statusMsg = "Kritis! Belanja Dibatasi";
                     } else {
@@ -1113,7 +1253,7 @@
             list.innerHTML = '';
             sorted.forEach(item => {
                 const el = document.createElement('div');
-                el.className = 'flex items-center justify-between p-3.5 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800/80 rounded-2xl shadow-sm premium-shadow';
+                el.className = 'flex items-center justify-between p-3.5 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl shadow-sm';
                 el.innerHTML = `
                     <div class="flex-1 pr-3">
                         <span class="font-black text-xs text-slate-800 dark:text-slate-100 block leading-tight break-words">${item.nama}</span>
@@ -1177,7 +1317,7 @@
                 }
 
                 const cardHtml = `
-                    <div onclick="showDetailTagihan(${tagihan.id})" class="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800/80 rounded-3xl p-5 premium-shadow active:scale-[0.98] transition-transform cursor-pointer ${opacityClass}">
+                    <div onclick="showDetailTagihan(${tagihan.id})" class="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-3xl p-5 active:scale-[0.98] transition-transform cursor-pointer ${opacityClass}">
                         <div class="flex justify-between items-start mb-3 gap-2">
                             <div class="flex flex-col gap-1.5 flex-1 pr-2">
                                 <span class="font-black text-[13px] text-slate-800 dark:text-slate-100 leading-tight break-words">${tagihan.nama}</span>
